@@ -50,7 +50,8 @@ def create_env(name, requirements=False, self=False, force=False):
         else:
             return path
 
-    invoke.run("virtualenv -p %s %s" % (PYTHON, path))
+    #invoke.run("virtualenv -p %s %s" % (PYTHON, path))
+    invoke.run("conda create -p %s pip" % path)
     if requirements:
         invoke.run("%s/bin/pip install -r requirements-%s.txt" % (path, name))
     if self:
